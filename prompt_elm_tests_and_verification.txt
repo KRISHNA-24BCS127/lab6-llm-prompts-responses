@@ -1,0 +1,20 @@
+We are in Step 3 and Step 6 of Lab 6B for the Fusion ERP Employee Leave Management (ELM) module.
+Objective: Review the implementation against the complete ELM specifications and generate comprehensive test cases (unit and integration tests) using pytest.
+
+Specifications & Business Rules to verify:
+1. BR-EL-001 & BR-EL-002: CL quota is 8 days/year; can be taken as half-day (0.5 days).
+2. BR-EL-003: RH quota is 2 days/year.
+3. BR-EL-005: EL quota is 30 days/year, max accumulation 300 days.
+4. BR-EL-009: Commuted Leave (COL) requires medical certificate / attachment.
+5. BR-EL-010: Half-day CL validation (Forenoon or Afternoon slot).
+6. BR-EL-012: Start date must not be after end date.
+7. BR-EL-013: Station Leave requires start/end dates, outstation address, and emergency contact.
+8. Multi-tier Approval Lifecycle:
+   - DRAFT -> PENDING_APPROVAL -> RECOMMENDED -> APPROVED
+   - Rejection sets status REJECTED with rejection reason
+   - Cancellation is allowed for pending requests and not for already rejected/approved requests.
+9. Leave Ledger:
+   - Balance is deducted upon APPROVAL and logged in LeaveLedger (DEBIT).
+   - Balance restored on cancellation (RESTORE).
+
+Please write the complete, robust test suite for `modules/leave/tests/test_elm_verification.py`.

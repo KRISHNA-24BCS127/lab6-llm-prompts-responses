@@ -1,0 +1,4 @@
+Inspect the provided Fusion ERP base repository and the supplied Employee Leave Management (ELM) specification artifacts.
+Implement and integrate the ELM module as a natural part of this existing Fusion ERP system.
+Reuse existing Fusion authentication, user roles, UI structure, database practices, and common utilities instead of creating disconnected standalone features.
+Provide the necessary frontend and backend changes, new files, routes, data models, and integration steps for Lab 6A.

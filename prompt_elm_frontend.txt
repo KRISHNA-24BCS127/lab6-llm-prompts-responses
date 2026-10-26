@@ -1,0 +1,38 @@
+We are continuing the improvement of the Fusion ERP Employee Leave Management (ELM) module for Lab 6B (Phase 2).
+Now we need the Frontend React UI components for the leave module, located in `client/src/modules/leave/`.
+
+The Frontend needs to support:
+1. `routes.tsx`:
+   - `/leave` redirecting to `/leave/balances` or `/leave/apply`
+   - `/leave/balances`: Overview of all leave balances (CL, RH, SCL, EL, COL, VL) with allocated, used, and remaining days.
+   - `/leave/apply`: Leave application form:
+     * Select Leave Type
+     * Start Date, End Date (with automatic duration calculation)
+     * Reason textarea
+     * Half-day toggle for CL (Forenoon / Afternoon)
+     * Station Leave checkbox: if checked, shows Station Start Date, End Date, Station Address, Emergency Contact Number
+     * Medical Certificate file upload (required if Leave Type is COL)
+     * Submit button with client-side validation
+   - `/leave/history`: Table of user's past and current leave requests with status badges (Draft, Pending, Recommended, Approved, Rejected, Cancelled) and a "Cancel Request" action for pending leaves.
+   - `/leave/approvals`: Inbox for Unit Head / HOD / Sanctioning Authority:
+     * List of pending requests
+     * View full request details (dates, station leave info, reason)
+     * Actions: Recommend, Approve, Reject (with required rejection reason/remarks dialog)
+
+2. API client in `client/src/modules/leave/api/leaveApi.ts`:
+   - `fetchLeaveBalances()`
+   - `fetchMyLeaveRequests()`
+   - `submitLeaveRequest(payload)`
+   - `cancelLeaveRequest(id)`
+   - `fetchPendingApprovals()`
+   - `recommendLeaveRequest(id, remarks)`
+   - `approveLeaveRequest(id, remarks)`
+   - `rejectLeaveRequest(id, remarks)`
+
+Please write the complete React TypeScript code for:
+1. `client/src/modules/leave/api/leaveApi.ts`
+2. `client/src/modules/leave/pages/LeaveBalancesPage.tsx`
+3. `client/src/modules/leave/pages/ApplyLeavePage.tsx`
+4. `client/src/modules/leave/pages/LeaveHistoryPage.tsx`
+5. `client/src/modules/leave/pages/LeaveApprovalsPage.tsx`
+6. `client/src/modules/leave/routes.tsx`

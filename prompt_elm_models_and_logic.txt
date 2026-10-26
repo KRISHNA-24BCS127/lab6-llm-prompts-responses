@@ -1,0 +1,36 @@
+We are improving the Fusion ERP Employee Leave Management (ELM) module for Lab 6B (Phase 2).
+Inherited Phase 1 Codebase:
+- App: modules.leave
+- Base models: LeaveType, LeaveBalance, LeaveRequest in modules/leave/models.py
+- Database mixins: TimeStampedModel, UserScopedModel from core.db.mixins
+
+Specification Requirements to implement:
+1. Leave Categories:
+   - CL (Casual Leave, 8 days/year, can be half-day)
+   - RH (Restricted Holiday, 2 days/year)
+   - SCL (Special Casual Leave, 15 days/year)
+   - EL (Earned Leave, max 300 days accumulation)
+   - COL (Commuted Leave / Medical, requires medical certificate attachment)
+   - VL (Vacation Leave for faculty)
+
+2. Station Leave Details (coupled inside leave application):
+   - is_station_leave (boolean)
+   - station_start_date, station_end_date
+   - station_address, emergency_contact_no
+
+3. Workflow & Approval State Machine:
+   - Statuses: DRAFT, PENDING_APPROVAL, RECOMMENDED, APPROVED, REJECTED, CANCELLED
+   - Roles:
+     - Employee (Faculty / Staff): apply, view self balances, cancel pending/draft
+     - Unit Head / HOD: recommend or approve department requests
+     - Sanctioning Authority (Dean / Director / Admin): final sanction for multi-tier requests
+   - Remarks / rejection reason tracked per decision step
+
+4. Leave Ledger / Audit Trail:
+   - Track every balance credit, debit (application approved), restoration (application cancelled/reversed)
+   - Fields: user_id, leave_type, transaction_type (CREDIT, DEBIT, RESTORE), days, reference_request, balance_after
+
+Please write the complete, production-grade Python code for:
+1. `modules/leave/models.py` (complete models with all choices, constraints, indexes, and helper methods)
+2. `modules/leave/api/serializers.py` (serializers with comprehensive validation for date ranges, balance checks, medical certificate requirement for COL, and station leave fields)
+3. `modules/leave/api/views.py` (API views for Apply, Cancel, Balance View, Ledger View, Recommendation, and Approval)
